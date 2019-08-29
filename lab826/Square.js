@@ -16,7 +16,7 @@ class Square{
 
   render(){
     fill(this.clr);
-    rectangle(this.loc.x, this.loc.y, this.w, this.w);
+    rect(this.loc.x, this.loc.y, this.w, this.w);
     //this.w = random(10,100);
   }
   checkedges(){
