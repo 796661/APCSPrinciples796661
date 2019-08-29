@@ -3,15 +3,15 @@ class Ball{
   constructor(x, y, dx, dy){
     this.loc = createVector(x, y);
     this.vel = createVector(dx, dy);
-    this.acc = createVector(0, 3);
+    this.acc = createVector(0, 1);
     this.clr = color(random(255), random(255), random(255));
     this.w = random(10,100);
   }
 
   run(){
-      this.render();
-      this.checkedges();
-      this.update();
+    this.checkedges();
+    this.update();
+    this.render();
   }
 
   render(){
@@ -21,10 +21,11 @@ class Ball{
   }
   checkedges(){
     if(this.loc.x < 0 || this.loc.x > width){
-      this.vel.dx = -this.vel.dx
+      this.vel.x = -this.vel.x
     }
     if(this.loc.y < 0 || this.loc.y > height){
-      this.vel.dy = -this.vel.dy
+      this.vel.y = -this.vel.y
+      this.loc.y = height -2
     }
   }
 
