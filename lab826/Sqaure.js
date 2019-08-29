@@ -1,37 +1,36 @@
 
-//class Square{
-  //constructor(x, y, dx, dy){
-    this.x = x;
-    this.y = y;
-    this.dx = dx;
-    this.dy = dy;
+class Square{
+  constructor(x, y, dx, dy){
+    this.loc = createVector(x, y);
+    this.vel = createVector(dx, dy);
+    this.acc = createVector(0, 3);
     this.clr = color(random(255), random(255), random(255));
     this.w = random(10,100);
   }
 
-  //run(){
+  run(){
       this.render();
       this.checkedges();
       this.update();
   }
 
-  //render(){
+  render(){
     fill(this.clr);
-    rectangle(this.x, this.y, this.w, this.w);
+    rectangle(this.loc.x, this.loc.y, this.w, this.w);
     //this.w = random(10,100);
   }
-  //checkedges(){
-    if(this.x < 0 || this.x > width){
-      this.dx = -this.dx
+  checkedges(){
+    if(this.loc.x < 0 || this.loc.x > width){
+      this.vel.dx = -this.vel.dx
     }
-    if(this.y < 0 || this.y > height){
-      this.dy = -this.dy
+    if(this.loc.y < 0 || this.loc.y > height){
+      this.vel.dy = -this.vel.dy
     }
   }
 
-  //update(){
+  update(){
     //this.clr = color(random(255), random(255), random(255));
-    this.x = this.x + this.dx;
-    this.y = this.y + this.dy;
+    this.vel.add(this.acc);
+    this.loc.add(this.vel);
   }
 }

@@ -1,6 +1,6 @@
 
-//class Triangle{
-  //constructor(x, y, dx, dy){
+class Triangle{
+  constructor(x, y, dx, dy){
     this.x = x;
     this.y = y;
     this.dx = dx;
@@ -9,18 +9,18 @@
     this.w = random(10,100);
   }
 
-//  run(){
+  run(){
       this.render();
       this.checkedges();
       this.update();
   }
 
-//  render(){
+  render(){
     fill(this.clr);
-    Triangle(this.x, this.y, this.w, this.w);
+    triangle(this.x, this.y, this.w, this.w);
     //this.w = random(10,100);
   }
-//  checkedges(){
+  checkedges(){
     if(this.x < 0 || this.x > width){
       this.dx = -this.dx
     }
@@ -29,8 +29,8 @@
     }
   }
 
-//  update(){
-    //this.clr = color(random(255), random(255), random(255));
+  update(){
+    this.clr = color(random(255), random(255), random(255));
     this.x = this.x + this.dx;
     this.y = this.y + this.dy;
   }
