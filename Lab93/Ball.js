@@ -27,13 +27,13 @@ class Ball{
     }
     if(this.loc.y < 0 || this.loc.y > height){
       this.vel.y = -this.vel.y
-      this.loc.y = height -2
+      //this.loc.y = height -2
     }
   }
 
   update(){
     var distToMainBall;
-    if(distToMainBall >= 0){
+    if(this.id >= 0){
       distToMainBall = this.loc.dist(mainBall.loc);
       if(distToMainBall < 250){
         //add atraction
@@ -48,5 +48,7 @@ class Ball{
         this.acc.mult(0.5);
       }
     }
+    this.vel.add(this.acc);
+    this.loc.add(this.vel);
   }
 }
