@@ -5,9 +5,13 @@ class Ball{
     this.vel = createVector(dx, dy);
     this.acc = createVector(0, 0);
     this.clr = color(random(255), random(255), random(255));
-    this.w = 15;
     this.id = id;
-    if(this.id < 0) {this.w = 50}
+    if(this.id < 0){
+      this.w = 50
+    }
+    else{
+      this.w = 15;
+    }
   }
 
   run(){
@@ -35,7 +39,7 @@ class Ball{
     var distToMainBall;
     if(this.id >= 0){
       distToMainBall = this.loc.dist(mainBall.loc);
-      if(distToMainBall < 250){
+      if(distToMainBall < 400){
         //add atraction
         this.acc = p5.Vector.sub(mainBall.loc, this.loc);
         this.acc.normalize();
@@ -48,6 +52,7 @@ class Ball{
         this.acc.mult(0.5);
       }
     }
+    this.vel.limit(5);
     this.vel.add(this.acc);
     this.loc.add(this.vel);
   }
