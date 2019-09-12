@@ -8,13 +8,13 @@ function setup() {
   var cnv = createCanvas(800,800);
   cnv.position((windowWidth-width)/2, 30);
   background(20,20,20);//background color
-  loadObjects(1000)
+  loadObjects(400)
 
 }
 
 function draw() {
   // put drawing code here
-  background(20,20,20, 3);
+  background(20,20,20);
   runBalls();
 
 }

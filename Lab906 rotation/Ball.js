@@ -40,6 +40,7 @@ class Ball{
     var distTorepeller;
     if(this.id >= 0){
       distToatractor = this.loc.dist(atractor.loc);
+      distTorepeller = this.loc.dist(repeller.loc);
       if(distToatractor < 400){
         //add atraction
         this.acc = p5.Vector.sub(atractor.loc, this.loc);
