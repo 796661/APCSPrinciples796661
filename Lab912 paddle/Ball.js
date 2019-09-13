@@ -36,14 +36,14 @@ class Ball{
   }
   isColliding(){
     if(this.loc.x > paddle.loc.x &&
-    this.loc.x < paddle.loc.x + paddlewidth &&
-    this.loc.y > paddle.loc.y &&
-    this.loc.y < paddle.loc.y + paddleheight &&){
-      //return true;
-      this.vel.y = -this.vel.y
-    } else {
-    //return false;
-    }
-
+      this.loc.x < paddle.loc.x + paddlewidth &&
+      this.loc.y > paddle.loc.y &&
+      this.loc.y < paddle.loc.y + paddleheight)
+      {
+        //return true;
+        this.vel.y = -this.vel.y
+      } else {
+        //return false;
+      }
   }
 }
