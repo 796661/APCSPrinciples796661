@@ -2,37 +2,31 @@
 // 8/21/19
 
 var paddle;
-var ball;
-var paddlewidth;
-var paddleheight;
-paddlewidth = paddle.loc2.x;
-paddleheight = paddle.loc2.y;
+var balls = []
 function setup() {
   // put setup code here
   var cnv = createCanvas(800,800);
   cnv.position((windowWidth-width)/2, 30);
   background(20,20,20);//background color
-  fill(200, 30, 150);
-  drawPaddle();
-  drawBall();
+  loadObjects(3);
 
 }
 
 function draw() {
   // put drawing code here
   background(20,20,20);
-  runPaddle();
-  runBall();
+  runObjects();
 }
-function drawPaddle(){
-  paddle = new Paddle(250, 500, 300, 100);
+function loadObjects(n){
+  for(var i = 0; i < n; i++){
+    balls[i] = new Ball(random(800), random(300), random(-1, 1), random(-10, 10));
+  }
+  paddle = new Paddle(250, 800, 400, 25);
 }
-function drawBall(){
-  ball = new Ball(400, 50, 50, 50);
-}
-function runPaddle(){
+
+function runObjects(){
   paddle.run();
-}
-function runBall(){
-  ball.run();
+  for(var i = 0; i < balls.length; i++){
+    balls[i].run();
+  }
 }

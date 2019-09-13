@@ -12,11 +12,12 @@ class Ball{
     this.checkedges();
     this.update();
     this.render();
+    this.isColliding();
   }
 
   render(){
     fill(this.clr);
-    ellipse(this.loc.x, this.loc.y, 50, 50);
+    ellipse(this.loc.x, this.loc.y, 30, 30);
 
   }
   checkedges(){
@@ -36,14 +37,10 @@ class Ball{
   }
   isColliding(){
     if(this.loc.x > paddle.loc.x &&
-      this.loc.x < paddle.loc.x + paddlewidth &&
+      this.loc.x < paddle.loc.x + paddle.w &&
       this.loc.y > paddle.loc.y &&
-      this.loc.y < paddle.loc.y + paddleheight)
-      {
-        //return true;
-        this.vel.y = -this.vel.y
-      } else {
-        //return false;
+      this.loc.y < paddle.loc.y + paddle.h){
+        this.vel.y = -this.vel.y;
       }
   }
 }
