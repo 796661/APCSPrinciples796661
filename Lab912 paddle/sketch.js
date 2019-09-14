@@ -19,7 +19,7 @@ function draw() {
 }
 function loadObjects(n){
   for(var i = 0; i < n; i++){
-    balls[i] = new Ball(random(800), random(300), random(-1, 1), random(-10, 10));
+    balls[i] = new Ball(random(800), random(300), random(-5, 5), random(-10, 10));
   }
   paddle = new Paddle(250, 800, 400, 25);
 }
