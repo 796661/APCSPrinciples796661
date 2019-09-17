@@ -3,6 +3,7 @@
 
 var paddle;
 var balls = []
+var a;
 function setup() {
   // put setup code here
   var cnv = createCanvas(800,800);
@@ -18,7 +19,7 @@ function draw() {
   runObjects();
   fill(2, 2, 2,);
   textSize(30);
-  text('Score:', 50, 30);
+  text('Score:' + a, 50, 30);
 }
 function loadObjects(n){
   for(var i = 0; i < n; i++){
