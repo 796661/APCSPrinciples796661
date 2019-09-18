@@ -11,7 +11,7 @@ function setup() {
   var cnv = createCanvas(800,800);
   cnv.position((windowWidth-width)/2, 30);
   background(250,250,250);//background color
-  loadObjects(3);
+  //loadObjects(3);
 
 }
 
@@ -60,7 +60,27 @@ function isTouching() {
     mouseY > 600 &&
     mouseY < 660){
       gameMode = 'easy'
+  }
+  if(mouseIsPressed &&
+    mouseX > 400 &&
+    mouseX < 460 &&
+    mouseY > 600 &&
+    mouseY < 660){
+      gameMode = 'normal'
     }
+  if(mouseIsPressed &&
+    mouseX > 600 &&
+    mouseX < 660 &&
+    mouseY > 600 &&
+    mouseY < 660){
+      gameMode = 'hard'
+    }
+}
+
+function playGame(){
+  if(gameMode === 'easy'){
+
+  }
 }
 
 function loadObjects(n){
