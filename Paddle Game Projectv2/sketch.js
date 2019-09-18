@@ -11,7 +11,7 @@ function setup() {
   var cnv = createCanvas(800,800);
   cnv.position((windowWidth-width)/2, 30);
   background(250,250,250);//background color
-  //loadObjects(3);
+  loadObjects(3);
 
 }
 
@@ -41,16 +41,22 @@ function startGame(){
 //normal mode
   fill(50, 200, 60);
   rect(400, 600, 60, 60);
-  text('Normal Mode', 360, 690);
+  text('Medium Mode', 360, 690);
 //hard mode
   fill(255, 50, 60);
   rect(600, 600, 60, 60);
   text('Hard Mode', 570, 690);
   //mode selecter
   isTouching();
-  if(gameMode === 'easy' || gameMode === 'normal' || gameMode === 'hard'){
+  if(gameMode === 'easy' || gameMode === 'medium' || gameMode === 'hard'){
+    if(gameMode === 'easy'){
+      
+    }
+    clear();
     gameState === 2;
+
   }
+
 }
 
 function isTouching() {
@@ -59,14 +65,15 @@ function isTouching() {
     mouseX < 260 &&
     mouseY > 600 &&
     mouseY < 660){
-      gameMode = 'easy'
+      console.log('easy');
+      gameMode = 'easy';
   }
   if(mouseIsPressed &&
     mouseX > 400 &&
     mouseX < 460 &&
     mouseY > 600 &&
     mouseY < 660){
-      gameMode = 'normal'
+      gameMode = 'medium'
     }
   if(mouseIsPressed &&
     mouseX > 600 &&
@@ -78,10 +85,9 @@ function isTouching() {
 }
 
 function playGame(){
-  if(gameMode === 'easy'){
-
+    runObjects();
   }
-}
+
 
 function loadObjects(n){
   for(var i = 0; i < n; i++){
