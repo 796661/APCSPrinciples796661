@@ -3,21 +3,21 @@
 
 var paddle;
 var balls = []
-var a;
 var gameState = 1;
 var gameMode;
+var score = 0;
 function setup() {
   // put setup code here
   var cnv = createCanvas(800,800);
   cnv.position((windowWidth-width)/2, 30);
-  background(250,250,250);//background color
-  loadObjects(3);
+  background(20,20,20);//background color
+  //loadObjects(3);
 
 }
 
 function draw() {
   // put drawing code here
-  background(250,250,250);
+  background(20,20,20);
   if(gameState === 1){
     startGame();
   }else if(gameState === 2){
@@ -30,7 +30,7 @@ function draw() {
 
 function startGame(){
 //title
-  fill(2, 2, 2);
+  fill(255, 255, 255);
   textSize(80);
   text('Paddle Game', 150, 150);
 //easy mode
@@ -48,15 +48,19 @@ function startGame(){
   text('Hard Mode', 570, 690);
   //mode selecter
   isTouching();
-  if(gameMode === 'easy' || gameMode === 'medium' || gameMode === 'hard'){
-    if(gameMode === 'easy'){
-      
-    }
+  if(gameMode === 1 || gameMode === 2 || gameMode === 3){
     clear();
+    if(gameMode === 1){
+      loadObjects(4);
+    }
+    if(gameMode === 2){
+      loadObjects(10);
+    }
+    if(gameMode === 3){
+      loadObjects(20);
+    }
     gameState === 2;
-
   }
-
 }
 
 function isTouching() {
@@ -66,34 +70,38 @@ function isTouching() {
     mouseY > 600 &&
     mouseY < 660){
       console.log('easy');
-      gameMode = 'easy';
+      gameMode = 1;
   }
   if(mouseIsPressed &&
     mouseX > 400 &&
     mouseX < 460 &&
     mouseY > 600 &&
     mouseY < 660){
-      gameMode = 'medium'
+      gameMode = 2;
     }
   if(mouseIsPressed &&
     mouseX > 600 &&
     mouseX < 660 &&
     mouseY > 600 &&
     mouseY < 660){
-      gameMode = 'hard'
+      gameMode = 3;
     }
 }
 
 function playGame(){
-    runObjects();
+  background(20, 20, 20);
+  fill(0,0,50);
+  //text('Score' + score, 20, 20);
+  //health text here
+  runObjects();
   }
 
 
 function loadObjects(n){
   for(var i = 0; i < n; i++){
-    balls[i] = new Ball(random(800), random(300), random(-5, 5), random(-10, 10));
+    balls[i] = new Ball(random(0, 800), random(0, 300), random(-5, 5), random(-10, 10));
   }
-  paddle = new Paddle(250, 800, 400, 25);
+  paddle = new Paddle(250, 775, 400, 25);
 }
 
 function runObjects(){
