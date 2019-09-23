@@ -59,7 +59,7 @@ function startGame(){
     if(gameMode === 3){
       loadObjects(20);
     }
-    gameState === 2;
+    gameState = 2;
   }
 }
 
@@ -94,6 +94,7 @@ function playGame(){
   //text('Score' + score, 20, 20);
   //health text here
   runObjects();
+
   }
 
 
