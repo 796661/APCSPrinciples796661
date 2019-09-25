@@ -51,7 +51,7 @@ function startGame(){
   if(gameMode === 1 || gameMode === 2 || gameMode === 3){
     clear();
     if(gameMode === 1){
-      loadObjects(4);
+      loadObjects(5);
     }
     if(gameMode === 2){
       loadObjects(10);
