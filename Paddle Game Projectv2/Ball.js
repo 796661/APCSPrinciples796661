@@ -60,7 +60,7 @@ class Ball{
           score=score+1;
           //console.log(score)
         }
-        if(this.vel.y<0){
+        if(this.vel.y<-1){
           balls.splice(i,1);
           health=health-1;
           //console.log(health)
@@ -68,9 +68,9 @@ class Ball{
       }
     }
     this.loc.add(this.vel);
-    this.vel.limit(10)
+    this.vel.limit(15)
     this.vel.add(this.acc);
-    if(balls.length <= 0 && wave <= 3 && health > 0){
+    if(balls.length < 0 && wave < 4 && health > 0){
       if(gameMode==='1'){
         loadObjects(5);
       }
@@ -96,13 +96,13 @@ class Ball{
         }
     }
     if(gameMode === 4){
-    if(this.loc.x > paddle.loc.x &&
-      this.loc.x < paddle.loc.x + paddle.w &&
-      this.loc.y > paddle.loc.y &&
-      this.loc.y < paddle.loc.y + paddle.h){
-        this.loc.y = -20;
-        this.vel.y = 1;
-      }
+      if(this.loc.x > paddle.loc.x &&
+        this.loc.x < paddle.loc.x + paddle.w &&
+        this.loc.y > paddle.loc.y &&
+        this.loc.y < paddle.loc.y + paddle.h){
+          this.loc.y = -20;
+          this.vel.y = 1;
+        }
     }
   }
 }

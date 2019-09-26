@@ -105,7 +105,7 @@ function playGame(){
   }
   if(wave === 4){
     clear();
-    gameState=3;
+    gameState = 3;
     win='yes';
   }
 }
@@ -113,7 +113,15 @@ function playGame(){
 function endGame(){
   background(20,20,20);
   if(win === 'no'){
-    
+    textSize(100);
+    fill(255,50,0);
+    text('You lose', 200, 350);
+    text('game over', 185, 450);
+  }
+  if(win==='yes'){
+    textSize(100);
+    fill(255,0,0);
+    text("You Win!",200,400);
   }
 }
 
