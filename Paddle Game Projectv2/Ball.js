@@ -70,21 +70,32 @@ class Ball{
     this.loc.add(this.vel);
     this.vel.limit(10)
     this.vel.add(this.acc);
-    if(balls.length<=0&& iteration<=3&& health>0){
-      if(gameMode==='easy'){
+    if(balls.length <= 0 && wave <= 3 && health > 0){
+      if(gameMode==='1'){
         loadObjects(5);
       }
-      if(gameMode==='medium'){
+      if(gameMode==='2'){
         loadObjects(10);
       }
-      if(gameMode==='hard'){
+      if(gameMode==='3'){
         loadObjects(20);
       }
-      runBalls();
-      iteration=iteration+1;
+      runObjects();
+      wave = wave + 1;
     }
   }
   isColliding(){
+    if(gameMode === 1 || gameMode === 2 || gameMode === 3){
+      if(this.loc.x > paddle.loc.x &&
+        this.loc.x < paddle.loc.x + paddle.w &&
+        this.loc.y > paddle.loc.y &&
+        this.loc.y < paddle.loc.y + paddle.h){
+          return(true);
+        }else{
+          return(false);
+        }
+    }
+    if(gameMode === 4){
     if(this.loc.x > paddle.loc.x &&
       this.loc.x < paddle.loc.x + paddle.w &&
       this.loc.y > paddle.loc.y &&
@@ -92,5 +103,6 @@ class Ball{
         this.loc.y = -20;
         this.vel.y = 1;
       }
+    }
   }
 }

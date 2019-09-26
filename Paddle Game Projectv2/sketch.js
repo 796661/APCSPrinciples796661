@@ -6,6 +6,9 @@ var balls = []
 var gameState = 1;
 var gameMode;
 var score = 0;
+var health = 10;
+var win;
+var wave = 1;
 function setup() {
   // put setup code here
   var cnv = createCanvas(800,800);
@@ -90,12 +93,29 @@ function isTouching() {
 
 function playGame(){
   background(20, 20, 20);
-  fill(0,0,50);
-  //text('Score' + score, 20, 20);
-  //health text here
+  fill(255,255,255);
+  textSize(25)
+  text('Score' + score, 20, 20);
+  text('Health' + health, 700, 20)
   runObjects();
-
+  if(health <= 0){
+    clear();
+    gameState = 3;
+    win = 'no';
   }
+  if(wave === 4){
+    clear();
+    gameState=3;
+    win='yes';
+  }
+}
+
+function endGame(){
+  background(20,20,20);
+  if(win === 'no'){
+    
+  }
+}
 
 
 function loadObjects(n){
