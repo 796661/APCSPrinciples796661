@@ -32,7 +32,7 @@ class Ball{
       }
       if(this.loc.y<0){
         this.vel.y = -this.vel.y;
-        this.vel.y=this.vel.y+2
+        this.vel.y = this.vel.y+2
       }
       if(this.loc.y>height){
         this.vel.y = -this.vel.y;
@@ -46,8 +46,8 @@ class Ball{
         this.vel.y = -this.vel.y
       }
       if(this.loc.y > 820){
-        this.loc.y = -20;
-        this.vel.y = 1;
+        //this.loc.y = -20;
+        //this.vel.y = 1;
       }
     }
   }
@@ -57,20 +57,20 @@ class Ball{
       if(balls[i].isColliding()){
         if(this.vel.y>0){
           balls.splice(i,1);
-          score=score+1;
-          //console.log(score)
+          score = score + 1;
+          //scoreboard
         }
-        if(this.vel.y<-1){
+        if(this.vel.y<0){
           balls.splice(i,1);
-          health=health-1;
-          //console.log(health)
+          health = health - 1;
+          //healthbar
         }
       }
     }
     this.loc.add(this.vel);
-    this.vel.limit(15)
+    this.vel.limit(10);
     this.vel.add(this.acc);
-    if(balls.length < 0 && wave < 4 && health > 0){
+    if(balls.length < 1 && wave >= 3 && health > 0){
       if(gameMode==='1'){
         loadObjects(5);
       }
@@ -80,8 +80,9 @@ class Ball{
       if(gameMode==='3'){
         loadObjects(20);
       }
-      runObjects();
       wave = wave + 1;
+      runObjects();
+      console.log('wave complete');
     }
   }
   isColliding(){
@@ -100,8 +101,8 @@ class Ball{
         this.loc.x < paddle.loc.x + paddle.w &&
         this.loc.y > paddle.loc.y &&
         this.loc.y < paddle.loc.y + paddle.h){
-          this.loc.y = -20;
-          this.vel.y = 1;
+        //  this.loc.y = -20;
+        //  this.vel.y = 1;
         }
     }
   }
