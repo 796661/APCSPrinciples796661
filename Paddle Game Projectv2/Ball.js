@@ -70,15 +70,23 @@ class Ball{
     this.loc.add(this.vel);
     this.vel.limit(10);
     this.vel.add(this.acc);
-    if(balls.length < 1 && wave >= 3 && health > 0){
-      if(gameMode==='1'){
+    if(balls.length < 1 && wave < 4 && health > 0){
+      if(gameMode=== 1){
         loadObjects(5);
       }
-      if(gameMode==='2'){
+      if(gameMode=== 2){
         loadObjects(10);
       }
-      if(gameMode==='3'){
+      if(gameMode=== 3){
         loadObjects(20);
+      }
+      wave = wave + 1;
+      runObjects();
+      console.log('wave complete');
+    }
+    if(gameMode === 4){
+      if(balls.length < 1 && health > 0){
+        loadObjects(4);
       }
       wave = wave + 1;
       runObjects();
@@ -86,23 +94,14 @@ class Ball{
     }
   }
   isColliding(){
-    if(gameMode === 1 || gameMode === 2 || gameMode === 3){
+    if(gameMode === 1 || gameMode === 2 || gameMode === 3 || gameMode === 4){
       if(this.loc.x > paddle.loc.x &&
         this.loc.x < paddle.loc.x + paddle.w &&
-        this.loc.y > paddle.loc.y &&
-        this.loc.y < paddle.loc.y + paddle.h){
+        this.loc.y + (this.w/2) > paddle.loc.y &&
+        this.loc.y + (this.w/2) < paddle.loc.y + paddle.h){
           return(true);
         }else{
           return(false);
-        }
-    }
-    if(gameMode === 4){
-      if(this.loc.x > paddle.loc.x &&
-        this.loc.x < paddle.loc.x + paddle.w &&
-        this.loc.y > paddle.loc.y &&
-        this.loc.y < paddle.loc.y + paddle.h){
-        //  this.loc.y = -20;
-        //  this.vel.y = 1;
         }
     }
   }
