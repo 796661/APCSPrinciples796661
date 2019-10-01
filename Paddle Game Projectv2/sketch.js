@@ -10,53 +10,15 @@ var health = 10;
 var win;
 var wave = 1;
 var buttons = [];
+
 function setup() {
   // put setup code here
   var cnv = createCanvas(800,800);
   cnv.position((windowWidth-width)/2, 30);
   background(20,20,20);//background color
-  loadButtons();
+  initGame();
+}
 
-}
-class Button{
-  constructor(x,y,w,h){
-    this.loc = createVector(x,y);
-    this.w = w;
-    this.h = h;
-    this.clr = color(random(255),random(255),random(255));
-  }
-  run(){
-    this.render();
-    this.checkEdges();
-  }
-  render(){
-    //loads buttons
-    fill(this.clr);
-    rect(this.loc.x, this.loc.y, this.w, this.h);
-    //for start screen
-    if(gameState === 1){
-      textSize(25);
-      fill(0, 150, 255);
-      text('Easy Mode', 120, 690);
-      fill(50, 200, 60);
-      text('Medium Mode', 260, 740);
-      fill(255, 50, 60);
-      text('Hard Mode', 420, 690);
-      fill(255, 255, 255);
-      text('Endless Mode', 560, 740);
-    }//for end screen
-    if(gameState === 3){
-      textSize(35);
-      fill(255, 255, 255);
-      text('Play Again?', 150, 600);
-      fill(255, 255, 255);
-      text('Quit?', 650, 600);
-    }
-  }
-  checkEdges(){
-    isTouching();
-  }
-}
 
 function draw() {
   // put drawing code here
@@ -68,6 +30,11 @@ function draw() {
   }else if(gameState === 3){
     endGame();
   }
+
+}
+
+function initGame(){
+     loadButtons();
 
 }
 
@@ -170,7 +137,7 @@ function endGame(){
     fill(255,0,0);
     text("You Win!",200,400);
   }//end screen buttons
-  runButtons();//restart button
+  //runButtons();//restart button
   if(mouseIsPressed &&
     mouseX>300&&
     mouseX<360&&
@@ -205,9 +172,7 @@ function runButtons(){
   }
   //for end screen
   if(gameState === 3){
-    for(var i = 0; i < buttons.length; i++){
-      buttons[i].run();
-    }
+
   }
 }
 
@@ -238,5 +203,46 @@ function runObjects(){
   paddle.run();
   for(var i = 0; i < balls.length; i++){
     balls[i].run();
+  }
+}
+
+
+class Button{
+  constructor(x,y,w,h){
+    this.loc = createVector(x,y);
+    this.w = w;
+    this.h = h;
+    this.clr = color(random(255),random(255),random(255));
+  }
+  run(){
+    this.render();
+    this.checkEdges();
+  }
+  render(){
+    //loads buttons
+    fill(this.clr);
+    rect(this.loc.x, this.loc.y, this.w, this.h);
+    //for start screen
+    if(gameState === 1){
+      textSize(25);
+      fill(0, 150, 255);
+      text('Easy Mode', 120, 690);
+      fill(50, 200, 60);
+      text('Medium Mode', 260, 740);
+      fill(255, 50, 60);
+      text('Hard Mode', 420, 690);
+      fill(255, 255, 255);
+      text('Endless Mode', 560, 740);
+    }//for end screen
+    if(gameState === 3){
+      textSize(35);
+      fill(255, 255, 255);
+      text('Play Again?', 150, 600);
+      fill(255, 255, 255);
+      text('Quit?', 650, 600);
+    }
+  }
+  checkEdges(){
+    isTouching();
   }
 }
