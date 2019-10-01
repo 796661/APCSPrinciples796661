@@ -1,5 +1,5 @@
 // Duncan Vaughan
-// 8/21/19
+// 1001 PaddleGame
 
 var paddle;
 var balls = []
