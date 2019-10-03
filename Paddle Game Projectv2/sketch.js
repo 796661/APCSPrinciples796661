@@ -185,9 +185,10 @@ function loadButtons(){
   }
   //for end screen
   if(gameState === 3){
-    buttons=[]
-    for(var i=0; i<2; i++){
-      buttons[i]= new Button(300 + (200 * i), 600, 60, 60);
+    fill(this.clr);
+    rect(60, 60, 150, 645);
+    fill(this.clr);
+    rect(60, 60, 550, 645);
     }
   }
 }
@@ -239,7 +240,7 @@ class Button{
       fill(255, 255, 255);
       text('Play Again?', 150, 600);
       fill(255, 255, 255);
-      text('Quit?', 650, 600);
+      text('Quit?', 550, 600);
     }
   }
   checkEdges(){
