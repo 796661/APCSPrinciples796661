@@ -172,7 +172,7 @@ function runButtons(){
   }
   //for end screen
   if(gameState === 3){
-
+    loadButtons();
   }
 }
 
@@ -191,7 +191,7 @@ function loadButtons(){
     rect(60, 60, 550, 645);
     }
   }
-}
+
 
 function loadObjects(n){
   for(var i = 0; i < n; i++){
