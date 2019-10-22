@@ -17,18 +17,18 @@ function loadSquares(){
   for(var x=0;x<8;x++){
     if(i%2===0){
       if(x%2===0){
-        var shade=color(0, 234, 0);
+        var shade=color(0, 0, 255);
       }
       if(x%2!==0){
-        var shade=color(0, 123, 0);
+        var shade=color(255, 123, 0);
       }
     }
     if(i%2!==0){
       if(x%2!==0){
-        var shade=color(0, 255, 0);
+        var shade=color(0, 0, 255);
       }
       if(x%2===0){
-        var shade=color(197, 0, 0);
+        var shade=color(255, 123, 0);
       }
     }
     squares[x+(8*i)]= new Square(100*x,100*i,100,100, shade);
