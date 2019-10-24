@@ -1,6 +1,6 @@
 //  Duncan Vaughan
 // 	10/4/19
-var bar = [];
+var bars = [];
 var numBars, barWidth;
 
 function setup(){
@@ -12,7 +12,7 @@ function setup(){
   numBars = width/barWidth;
   loadBars(numBars);
   runBars();
-  BubbleSort();
+  Bubblesort();
 }
 
 function draw(){
@@ -35,7 +35,7 @@ function runBars(){
   }
 }
 
-function bubblesort(){
+function Bubblesort(){
   for (var i=bars.length-1;i>0; i--){
     for (var j=0; j<i; j++){
       if(bars[j].h>bars[j+1].h){
@@ -44,4 +44,10 @@ function bubblesort(){
       }
     }
   }
+}
+
+function swap(list,a,b){
+  var temp=list[a];
+  list[a]=list[b];
+  list[b]=temp;
 }

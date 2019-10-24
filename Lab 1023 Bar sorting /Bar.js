@@ -8,7 +8,7 @@ class Bar{
     this.render();
   }
   render(){
-    fill(random(0,255), random(0,255), random(0,255));
+    fill(134, 0, 216);
     rect(this.loc.x, this.loc.y, this.w, this.h);
   }
   set(i){
