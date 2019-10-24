@@ -31,8 +31,8 @@ function selectionsort(){
     swap(list,index,i);
     swaps = swaps+1
   }
-  var t2=millis();
-  var seconds=((t2-t1)/1000)
+  var t2 = millis();
+  var seconds = ((t2-t1)/1000);
   console.log(list);
   console.log(checks);
   console.log(swaps);
