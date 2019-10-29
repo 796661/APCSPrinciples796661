@@ -11,14 +11,14 @@ function setup(){
   barWidth = 25;
   numBars = width/barWidth;
   loadBars(numBars);
-  runBars();
-  Bubblesort();
+  frameRate(5);
+  for(var i=0; i<bars.length; i++){
+    bars[i].run();
+  }
 }
 
 function draw(){
-  background(10, 10, 10);
-  frameRate(1);
-  runBars();
+  Bubblesort();
 }
 
 function loadBars(num){
@@ -31,17 +31,19 @@ function loadBars(num){
 
 function runBars(){
   for(var i=0; i<bars.length; i++){
+    bars[i].set(i);
+  }
+  background(235);
+  for(var i=0; i<bars.length; i++){
     bars[i].run();
   }
 }
 
 function Bubblesort(){
-  for (var i=bars.length-1;i>0; i--){
-    for (var j=0; j<i; j++){
-      if(bars[j].h>bars[j+1].h){
-        swap(bars, j, j+1);
-        runBars();
-      }
+  for (var j=0; j<bars.length-1; j++){
+    if(bars[j].h>bars[j+1].h){
+      swap(bars, j, j+1);
+      runBars();
     }
   }
 }
