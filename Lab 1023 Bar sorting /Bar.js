@@ -1,3 +1,4 @@
+//simple code that creates the bar
 class Bar{
   constructor(location){
     this.loc = location;
