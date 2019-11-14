@@ -1,25 +1,24 @@
 // Duncan Vaughan
 // 10/31/19
 
-var segments = [];
-
-var score = 0;
+segments = [];
+var head;
+score = 0;
 function setup() {
   // put setup code here
   var cnv = createCanvas(800,800);
   cnv.position((windowWidth-width)/2, 30);
-  background(255,255,255);//background color
-  loadSnake();
+  background(1,1,1);//background color
+  loadHead();
 }
 
 function draw(){
   runSnake();
 }
-function loadSnake(){
-  segments[0] = new Snake(100, 100, 50, 50, color(255, 0, 0));
+function loadHead(){
+  head = new Snake(0, 0, 50, 50, color(0, 255, 0));
 }
 function runSnake(){
-  for (var i = 0; i < segments.length; i++){
-    segments[i].run();
-  }
+  background(1,1,1);
+  head.run();
 }
