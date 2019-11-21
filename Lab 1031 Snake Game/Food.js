@@ -17,6 +17,8 @@ class Food{
   }
 
   update(){
-    
+    textSize(25);
+    fill(0,0,255);
+    text('Score: '+ numberFood, 650,20);
   }
 }
