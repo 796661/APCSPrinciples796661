@@ -17,9 +17,9 @@ class Snake{
   render(){
     fill(this.clr);
     rect(this.loc.x * this.w, this.loc.y * this.w, this.w, this.w);
-    //for (var i = 0; i < this.body.length; i++){
-    //  rect(this.body[i].loc.x * this.w, this.body[i].loc.y * this.w, this.w, this.w);
-    //}
+    for (var i = 0; i > this.body.length; i++){
+      rect(this.body[i].loc.x * this.w, this.body[i].loc.y * this.w, this.w, this.w);
+    }
   }
   checkedges(){
     if(this.loc.x < 0 || this.loc.x > width/this.w){
@@ -35,23 +35,30 @@ class Snake{
         head.vel.x = 1;
         head.vel.y = 0;
       }
+    if(keyIsPressed&&
+      keyCode===LEFT_ARROW){
+        head.vel.x = -1;
+        head.vel.y = 0;
+      }
       if(keyIsPressed&&
-        keyCode===LEFT_ARROW){
-          head.vel.x = -1;
-          head.vel.y = 0;
+        keyCode===UP_ARROW){
+          head.vel.x = 0;
+          head.vel.y = -1;
+      }
+      if(keyIsPressed&&
+        keyCode===DOWN_ARROW){
+          head.vel.x = 0;
+          head.vel.y = 1;
+      }
+      if(this.body.length > 0){
+        for(var i = this.body.length - 1; i>0; i--){
+          this.body[i].x = this.body[i-x].x;
+          this.body[i].y = this.body[i-y].y;
         }
-        if(keyIsPressed&&
-          keyCode===UP_ARROW){
-            head.vel.x = 0;
-            head.vel.y = -1;
-          }
-          if(keyIsPressed&&
-            keyCode===DOWN_ARROW){
-              head.vel.x = 0;
-              head.vel.y = 1;
-            }
+        this.body[0].x = head.loc.x;
+        this.body[0].y = head.loc.y;
+      }
     head.loc.add(this.vel);
-
   }
   eatFood(){
     if(head.loc.x === food[0].loc.x &&
