@@ -17,8 +17,8 @@ class Snake{
   render(){
     fill(this.clr);
     rect(this.loc.x * this.w, this.loc.y * this.w, this.w, this.w);
-    for (var i = 0; i > this.body.length; i++){
-      rect(this.body[i].loc.x * this.w, this.body[i].loc.y * this.w, this.w, this.w);
+    for (var i = 0; i < this.body.length; i++){
+      rect(this.body[i].x * this.w, this.body[i].y * this.w, this.w, this.w);
     }
   }
   checkedges(){
@@ -52,8 +52,8 @@ class Snake{
       }
       if(this.body.length > 0){
         for(var i = this.body.length - 1; i>0; i--){
-          this.body[i].x = this.body[i-x].x;
-          this.body[i].y = this.body[i-y].y;
+          this.body[i].x = this.body[i-1].x;
+          this.body[i].y = this.body[i-1].y;
         }
         this.body[0].x = head.loc.x;
         this.body[0].y = head.loc.y;
