@@ -1,8 +1,8 @@
 // Duncan Vaughan
 // 8/21/19
 
-var ships = []
-var atractor, repeller;
+var ship;
+var planet;
 function setup() {
   // put setup code here
   var cnv = createCanvas(800,800);
@@ -15,20 +15,19 @@ function setup() {
 function draw() {
   // put drawing code here
   background(20,20,20);
-  runBalls();
+  runObjects();
 
 }
 function loadObjects(n){
-  atractor = new Ball(width/2, height/2, random(-1,1), random(-1,1), -1);
-  //repeller = new Ball(width/2, height/2, random(-1,1), random(-1,1), -1);
+  planet = new Planet(width/2, height/2, random(-1,1), random(-1,1), -1);
     for(var i = 0; i < n; i++){
-      ships[i] = new Ship(random(width), random(height), random(-2,2), random(-2,2), i);
+      ship = new Ship(random(width), random(height), random(-2,2), random(-2,2), i);
   }
+
 }
-function runBalls(){
-  atractor.run();
-  //repeller.run();
-    for(var i = 0; i < ships.length; i++){
-      ships[i].run();
+function runObjects(){
+  planet.run();
+  for(var i = 0; i < ship.length; i++){
+    ship.run();
   }
 }

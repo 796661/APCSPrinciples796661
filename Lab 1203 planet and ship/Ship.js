@@ -3,10 +3,8 @@ class Ship{
   constructor(x, y, dx, dy, id){
     this.loc = createVector(x, y);
     this.vel = createVector(dx, dy);
-    this.clr = color(random(255), random(255), random(255));
-    this.id = id;
-
-    }
+    this.clr = color(255, 255, 255);
+  }
 
 
   run(){
@@ -26,30 +24,18 @@ class Ship{
     pop();
   }
   checkedges(){
-    if(this.loc.x < 0) this.loc.x = width;
-    if(this.loc.x > width) this.loc.x = 0;
-    if(this.loc.y < 0) this.loc.y = height;
-    if(this.loc.y > height) this.loc.y = 0;
+    if(this.loc.x < 0 || this.loc.x > 800) this.vel.x = -this.vel.x;
+    if(this.loc.y < 0 || this.loc.y > 800) this.vel.y = -this.vel.y;
 
   }
   update(){
-    var distToatractor;
-  //  var distTorepeller;
-    if(this.id >= 0){
-      distToatractor = this.loc.dist(atractor.loc);
-    //  distTorepeller = this.loc.dist(repeller.loc);
-      if(distToatractor < 800){
-        //add atraction
-        this.acc = p5.Vector.sub(atractor.loc, this.loc);
-        this.acc.normalize();
-        this.acc.mult(0.1);
-      }
-    //  if(distTorepeller < 200){
-        //add atraction
-      //  this.acc = p5.Vector.sub(this.loc, repeller.loc);
-      //  this.acc.normalize();
-      //  this.acc.mult(0.5);
-      //}
+    var distToplanet;
+    distToplanet = this.loc.dist(planet.loc);
+    if(distToplanet < 600){
+      //add atraction
+      this.acc = p5.Vector.sub(planet.loc, this.loc);
+      this.acc.normalize();
+      this.acc.mult(0.1);
     }
     this.vel.add(this.acc);
     this.vel.limit(2);
