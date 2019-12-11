@@ -11,8 +11,8 @@ class Snake{
     this.render();
     this.checkedges();
     this.update();
+    this.tangled();
     this.eatFood();
-
   }
   render(){
     fill(this.clr);
@@ -23,10 +23,10 @@ class Snake{
   }
   checkedges(){
     if(this.loc.x < 0 || this.loc.x > width/this.w){
-      clear();
+      endGame = 'true';
     }
     if(this.loc.y < 0 || this.loc.y > height/this.w){
-      clear();
+      endGame = 'true';
     }
   }
   update(){
@@ -68,4 +68,11 @@ class Snake{
         eatFood = 'yes';
       }
     }
+  tangled(){
+    for (var i = 0; i < this.body.length; i++){
+      if (head.loc.x === this.body[i].x && head.loc.y === this.body[i].y){
+        endGame = 'true';
+      }
+    }
   }
+}
