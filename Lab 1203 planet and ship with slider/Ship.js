@@ -29,16 +29,16 @@ class Ship{
 
   }
   update(){
-    var distToplanet;
-    distToplanet = this.loc.dist(planet.loc);
-    if(distToplanet < 600){
-      //add atraction
-      this.acc = p5.Vector.sub(planet.loc, this.loc);
-      this.acc.normalize();
-      this.acc.mult(0.1);
-    }
+    this.acc=p5.Vector.sub(planet.loc,this.loc)
+    this.acc.normalize();
+    this.acc.mult(sliderAttraction.value());
     this.vel.add(this.acc);
-    this.vel.limit(2);
+    this.vel.limit(sliderLimit.value());
     this.loc.add(this.vel);
+    if ((this.loc.dist(planet.loc))<20){
+      this.loc=createVector(random(800),random(800));
+      planet.loc=createVector(random(width),random(height));
+      planet.vel=createVector(random(-3,3),random(-3,3));
+    }
   }
 }
